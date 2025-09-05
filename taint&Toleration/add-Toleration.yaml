@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: myapp
+    labels:
+        app: myapp
+spec:
+    containers:
+        - name: nginx-app
+          image: nginx
+    tolerations:
+      - key: "color"
+        operator: "Equal"
+        value: "pink"
+        effect: "NoSchedule"
