@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: frontend-deployment
+    labels:
+        app: myfrontend
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: frontend
+    template:
+        metadata:
+            name: web-pod-frontend
+            labels:
+                app: frontend
+        spec:
+            containers:
+            - name: linux
+              image: centos:7
+              command: ["sleep","3600"]
