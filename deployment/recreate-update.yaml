@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: first-deployment
+    labels:
+        app: my-nginx
+        type: webserver
+spec:
+    replicas: 10
+    selector:
+        matchLabels:
+            type: webserver
+    strategy:
+            type: Recreate
+    template:
+        metadata:
+            name: web-pod
+            labels:
+                app: mywebapp
+                type: webserver
+        spec:
+            containers:
+            - name: nginx-container
+              image: nginx
